@@ -1,0 +1,23 @@
+{
+  "roles": {
+    "admin": {
+      "label": "Admin",
+      "dashboard": "admin/index.php",
+      "permissions": ["read", "create", "update", "delete"]
+    }
+  },
+  "modules": {
+    "lapangan": {
+      "label": "Lapangan",
+      "allowed_roles": ["admin"]
+    },
+    "booking": {
+      "label": "Booking (Admin)",
+      "allowed_roles": ["admin"]
+    },
+    "produk": {
+      "label": "Produk",
+      "allowed_roles": ["admin"]
+    }
+  }
+}

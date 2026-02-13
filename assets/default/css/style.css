@@ -1,0 +1,99 @@
+/* Gaya untuk area struk yang akan dicetak */
+.struk-print-area {
+    font-family: Arial, sans-serif;
+    max-width: 400px; /* Lebar struk */
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: white;
+    color: black;
+    box-shadow: none; /* Hilangkan shadow jika ada */
+    /* border-radius: 0;  Hilangkan border radius jika ada */
+}
+
+.struk-print-area h3, .struk-print-area h4 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.struk-print-area table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.struk-print-area th,
+.struk-print-area td {
+    border: 1px solid #000;
+    padding: 4px;
+    text-align: left;
+    font-size: 12px; /* Ukuran font lebih kecil untuk struk */
+}
+
+.struk-print-area th {
+    background-color: #f2f2f2; /* Warna header ringan */
+}
+
+.struk-print-area .text-end {
+    text-align: right;
+}
+
+.struk-print-area .struk-footer {
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 11px;
+}
+
+/* Media Query untuk Print */
+/* CSS khusus untuk menangani tampilan saat pencetakan */
+/* CSS khusus untuk menangani tampilan saat pencetakan */
+@media print {
+    /* 1. Sembunyikan seluruh elemen antarmuka web (Navbar, Sidebar, Footer, Tombol) */
+    body * {
+        visibility: hidden;
+        overflow: visible !important;
+    }
+
+    /* 2. Tampilkan secara khusus hanya kontainer struk */
+    #struk-for-print, #struk-for-print * {
+        visibility: visible;
+    }
+
+    /* 3. Atur posisi struk agar berada di tengah dan terlihat seperti struk asli */
+    #struk-for-print {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%; /* Menyesuaikan lebar kertas printer */
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    /* 4. Desain interior struk (lebar standar struk thermal 80mm) */
+    .struk-print-area {
+        width: 80mm; 
+        margin: 0 auto; /* Memposisikan struk di tengah kertas A4/thermal */
+        padding: 10px;
+        border: 1px solid #eee; /* Garis bantu tipis agar terlihat batasnya */
+        font-family: 'Courier New', Courier, monospace; /* Font khas kasir */
+        color: #000;
+    }
+
+    /* 5. Hilangkan margin otomatis dari browser agar tidak ada header/footer tambahan (seperti tanggal/URL) */
+    @page {
+        size: auto;
+        margin: 0mm;
+    }
+
+    /* 6. Pastikan tabel dalam struk tidak terpotong */
+    table {
+        page-break-inside: auto;
+    }
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+}
